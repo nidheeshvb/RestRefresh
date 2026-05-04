@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -34,12 +35,18 @@ export default function Hero() {
             Tired between journeys? We've got sleeping pods, shower facilities, and secure luggage storage - open 24x7 at the heart of Ernakulam's biggest transit hub.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="bg-primary text-on-primary px-8 py-3 rounded-md font-headline font-bold tracking-tight shadow-xl shadow-black/20 hover:translate-y-[-2px] transition-all active:scale-95 cursor-pointer">
+            <Link 
+              to="/contact"
+              className="bg-primary text-on-primary px-8 py-3 rounded-md font-headline font-bold tracking-tight shadow-xl shadow-black/20 hover:translate-y-[-2px] transition-all active:scale-95 cursor-pointer"
+            >
               Enquire Now
-            </button>
-            <button className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-md font-headline font-bold tracking-tight hover:bg-white/20 transition-all active:scale-95 cursor-pointer">
+            </Link>
+            <Link 
+              to="/offer"
+              className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 rounded-md font-headline font-bold tracking-tight hover:bg-white/20 transition-all active:scale-95 cursor-pointer"
+            >
               View Locations
-            </button>
+            </Link>
           </div>
         </motion.div>
 

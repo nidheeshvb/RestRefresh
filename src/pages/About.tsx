@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Bed, ShowerHead, Lock, Star, ChevronDown } from 'lucide-react';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const team = [
   {
@@ -352,9 +353,12 @@ export default function About() {
             <p className="text-white/60 max-w-xl mx-auto mb-10 text-xl font-light leading-relaxed">
               Experience our pods for yourself. Book your first session at any of our city locations.
             </p>
-            <button className="bg-primary text-white px-10 py-3 rounded-md font-bold text-base hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/30 cursor-pointer">
+            <Link 
+              to="/contact"
+              className="bg-primary text-white px-10 py-3 rounded-md font-bold text-base hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/30 inline-block"
+            >
               Find a Pod Near You
-            </button>
+            </Link>
           </div>
         </div>
       </div>

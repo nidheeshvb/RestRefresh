@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -7,12 +8,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           <div className="lg:col-span-2 space-y-8">
             <div className="flex items-center gap-4">
-              <img 
-                alt="Rest Refresh Logo" 
-                className="h-16 w-16 object-contain shadow-2xl shadow-black/40" 
-                  src="/logo.svg" 
-              />
-              <span className="text-3xl font-black text-zinc-50 font-headline tracking-tighter">Rest Refresh</span>
+              <Link to="/" className="flex items-center gap-4">
+                <img 
+                  alt="Rest Refresh Logo" 
+                  className="h-16 w-16 object-contain shadow-2xl shadow-black/40" 
+                    src="/logo.svg" 
+                />
+                <span className="text-3xl font-black text-zinc-50 font-headline tracking-tighter">Rest Refresh</span>
+              </Link>
             </div>
             <p className="font-body text-zinc-400 text-base leading-relaxed max-w-sm font-light">
               Redefining urban solitude through premium, bookable micro-spaces. Your private office, lounge, and sanctuary, anywhere in the city.
@@ -36,17 +39,17 @@ export default function Footer() {
           <div className="grid grid-cols-2 lg:grid-cols-2 gap-8 lg:col-span-2">
             <div className="space-y-6">
               <h4 className="text-zinc-100 font-headline font-bold text-xs uppercase tracking-[0.2em]">Company</h4>
-              <ul className="font-body text-zinc-500 text-sm space-y-4 font-light">
-                <li><a className="hover:text-primary transition-colors" href="#">About Us</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">Our Locations</a></li>
+              <ul className="font-body text-zinc-500 text-sm space-y-4 font-medium">
+                <li><Link className="hover:text-primary transition-colors" to="/about">About Us</Link></li>
+                <li><Link className="hover:text-primary transition-colors" to="/offer">Our Services</Link></li>
+                <li><Link className="hover:text-primary transition-colors" to="/contact">Contact</Link></li>
                 <li><a className="hover:text-primary transition-colors" href="#">Careers</a></li>
-                <li><a className="hover:text-primary transition-colors" href="#">Press Kit</a></li>
               </ul>
             </div>
             <div className="space-y-6">
               <h4 className="text-zinc-100 font-headline font-bold text-xs uppercase tracking-[0.2em]">Support</h4>
-              <ul className="font-body text-zinc-500 text-sm space-y-4 font-light">
-                <li><a className="hover:text-primary transition-colors" href="#">FAQ</a></li>
+              <ul className="font-body text-zinc-500 text-sm space-y-4 font-medium">
+                <li><Link className="hover:text-primary transition-colors" to="/about#faq">FAQ</Link></li>
                 <li><a className="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
                 <li><a className="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
                 <li><a className="hover:text-primary transition-colors" href="#">Safety & Security</a></li>

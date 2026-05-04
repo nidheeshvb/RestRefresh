@@ -1,13 +1,52 @@
-import { motion } from 'motion/react';
-import { Plus, X, ShieldCheck, Zap, Bell, Waves, Warehouse, Lightbulb, Plug, Fan, Smartphone, GlassWater, Shirt, Archive, Fingerprint } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Plus, X, ShieldCheck, Zap, Bell, Waves, Warehouse, Lightbulb, Plug, Fan, Smartphone, GlassWater, Shirt, Archive, Fingerprint, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const hotspots = [
-  { top: '28%', left: '45%', title: 'Climate Controlled', description: 'Precision AC and air filtration for your perfect environment.' },
-  { top: '18%', left: '22%', title: 'Mood Lighting', description: 'Mood lighting adjustable to your recovery needs.' },
-  { top: '45%', left: '50%', isMain: true, title: 'Smart Controls', description: 'Adjust temperature, lighting, and sound from the central console.' }
+  { top: '35%', left: '42%', title: 'Climate Controlled', description: 'Precision AC and air filtration for your perfect environment.' },
+  { top: '22%', left: '18%', title: 'Mood Lighting', description: 'Mood lighting adjustable to your recovery needs.' },
+  { top: '52%', left: '55%', title: 'Smart Controls', description: 'Adjust temperature, lighting, and sound from the central console.' },
+  { top: '72%', left: '38%', title: 'Ergonomic Comfort', description: 'Medical-grade mattresses designed for maximum pressure relief.' },
+  { top: '45%', left: '78%', title: 'Sound Sanctuary', description: 'Acoustic engineering that blocks out the chaos of the transit hub.' }
 ];
 
 export default function OfferPage() {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
+
+  const galleryImages = [
+    { 
+      url: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?auto=format&fit=crop&q=80&w=1200",
+      span: "col-span-2 row-span-2",
+      label: "Premium Pod Interior"
+    },
+    { 
+      url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+      span: "col-span-1 row-span-1",
+      label: "Luxe Showers"
+    },
+    { 
+      url: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200",
+      span: "col-span-1 row-span-1",
+      label: "Waiting Lounge"
+    },
+    { 
+      url: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&q=80&w=1200",
+      span: "col-span-2 row-span-1",
+      label: "Privacy & Silence"
+    }
+  ];
+
+  const navigate = (direction: 'next' | 'prev') => {
+    if (selectedIndex === null) return;
+    if (direction === 'next') {
+      setSelectedIndex((selectedIndex + 1) % galleryImages.length);
+    } else {
+      setSelectedIndex((selectedIndex - 1 + galleryImages.length) % galleryImages.length);
+    }
+  };
+
   return (
     <div className="pt-20">
       {/* Header Section */}
@@ -55,31 +94,84 @@ export default function OfferPage() {
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPiNPjB3L2mQ8wGGlCLQjMJDxV3ZfGNrKjS5L6yAKJ82J0Cegx86eUWOmjmLpBiQqBmc1YS1U02KjUK_Gw0uAw6mvQiQ8Wh3tsZw6yWH17IPWojnKOGwkbVa0zLyATcTWWtK9jyBLeYDMyMABrdpI0BV3dixV4y7jZ_FTdq2k4D5mdply4X812cwtCv8WN40EJcEs9I9_hOsbxUBwW0vQ83a-25XMusY29CAkJ2UgdkH4IgW8SAgvj1vZJDo5Rl6e_VOZPH7qwD4" 
             />
             
-            {/* Hotspots */}
-            {hotspots.map((spot, i) => (
-              <div 
-                key={i}
-                className="absolute hotspot-trigger group pointer-events-auto"
-                style={{ top: spot.top, left: spot.left }}
-              >
-                <div className="relative w-10 h-10 flex items-center justify-center transform group-hover:scale-110 transition-transform cursor-help">
-                  <div className="absolute w-full h-full bg-white/30 rounded-full animate-ping"></div>
-                  <div className={`relative w-6 h-6 rounded-full flex items-center justify-center shadow-lg border-2 ${spot.isMain ? 'bg-white border-primary' : 'bg-white border-white'}`}>
-                    {spot.isMain ? <X size={12} className="text-primary" /> : <Plus size={12} className="text-primary" />}
-                  </div>
+            {/* Hotspots Container */}
+            <div className="absolute inset-0 z-40 pointer-events-none">
+              {hotspots.map((spot, i) => (
+                <div 
+                  key={i}
+                  className="absolute pointer-events-auto"
+                  style={{ top: spot.top, left: spot.left }}
+                >
+                  <button 
+                    onClick={() => setActiveHotspot(activeHotspot === i ? null : i)}
+                    className="relative w-10 h-10 flex items-center justify-center transform hover:scale-110 transition-transform cursor-pointer group -translate-x-1/2 -translate-y-1/2"
+                  >
+                    <div className="absolute w-full h-full bg-white/30 rounded-full animate-ping"></div>
+                    <div className={`relative w-6 h-6 rounded-full flex items-center justify-center shadow-lg border-2 bg-white transition-all duration-300 ${activeHotspot === i ? 'border-primary rotate-45' : 'border-white'}`}>
+                      {activeHotspot === i ? <X size={12} className="text-primary" /> : <Plus size={12} className="text-primary" />}
+                    </div>
+                  </button>
+                  
+                  <AnimatePresence>
+                    {activeHotspot === i && (
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.9, y: 15, x: '-50%' }}
+                        animate={{ opacity: 1, scale: 1, y: 0, x: '-50%' }}
+                        exit={{ opacity: 0, scale: 0.9, y: 15, x: '-50%' }}
+                        className="hidden md:block absolute bottom-full left-1/2 mb-6 w-56 bg-zinc-900/95 backdrop-blur-xl text-white text-xs p-4 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-50 border border-white/20 text-center"
+                      >
+                        <strong className="block text-primary mb-1 text-sm font-bold">{spot.title}</strong>
+                        <p className="font-light opacity-80 leading-relaxed">{spot.description}</p>
+                        {/* Arrow Down */}
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-zinc-900/95"></div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-                <div className={`opacity-0 invisible group-hover:opacity-100 group-hover:visible absolute bottom-full left-1/2 -translate-x-1/2 mb-6 w-56 bg-zinc-900/90 backdrop-blur-xl text-white text-xs p-4 rounded-lg shadow-2xl transition-all duration-300 translate-y-2 group-hover:translate-y-1 pointer-events-none text-center border border-white/10 ${spot.isMain ? '!opacity-100 !visible !translate-y-0' : ''}`}>
-                  <strong className="block text-primary mb-1 text-sm">{spot.title}</strong>
-                  <p className="font-light opacity-80">{spot.description}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
             <div className="relative z-10 p-12 md:p-20 bg-linear-to-t from-zinc-900/90 via-zinc-900/40 to-transparent">
-              <h3 className="font-headline text-4xl md:text-5xl text-white font-bold mb-6 tracking-tight">Climate Controlled</h3>
-              <p className="text-white/80 max-w-lg text-lg leading-relaxed font-light">
-                Experience a sanctuary where every detail is optimized. Every pod features dedicated silent AC units and air filtration systems for the perfect atmosphere.
-              </p>
+              <div className="space-y-6">
+                <h3 className="font-headline text-4xl md:text-5xl text-white font-bold tracking-tight">Climate Controlled</h3>
+                <p className="text-white/80 max-w-lg text-lg leading-relaxed font-light">
+                  Experience a sanctuary where every detail is optimized. Every pod features dedicated silent AC units and air filtration systems for the perfect atmosphere.
+                </p>
+
+                {/* Mobile Hotspot Info Box */}
+                <div className="md:hidden">
+                  <AnimatePresence mode="wait">
+                    {activeHotspot !== null ? (
+                      <motion.div 
+                        key={activeHotspot}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 space-y-2 mt-8"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                            <Plus size={16} className="text-white" />
+                          </div>
+                          <strong className="text-primary text-lg font-headline font-black">{hotspots[activeHotspot].title}</strong>
+                        </div>
+                        <p className="text-white/90 text-sm leading-relaxed font-light italic">
+                          "{hotspots[activeHotspot].description}"
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-white/40 text-xs mt-8 flex items-center gap-2 italic uppercase tracking-widest font-bold"
+                      >
+                        <span className="w-8 h-px bg-white/20"></span>
+                        Tap the plus icons for details
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -166,9 +258,12 @@ export default function OfferPage() {
                   <p className="text-white/80 text-sm leading-relaxed font-light">Every pod has its own curtain for complete privacy. Pods are for single occupancy. Children under 10 may accompany an adult at the receptionist's discretion.</p>
                 </div>
               </div>
-              <button className="mt-10 bg-white text-primary px-8 py-3 rounded-md font-bold text-xs uppercase tracking-[0.2em] hover:bg-orange-50 transition-all self-start shadow-xl active:scale-95 cursor-pointer">
+              <Link 
+                to="/contact"
+                className="mt-10 bg-white text-primary px-8 py-3 rounded-md font-bold text-xs uppercase tracking-[0.2em] hover:bg-orange-50 transition-all self-start shadow-xl active:scale-95 cursor-pointer"
+              >
                 Learn More
-              </button>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -307,8 +402,116 @@ export default function OfferPage() {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section className="pt-24 pb-12 border-t border-zinc-100">
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="space-y-4">
+              <span className="text-primary font-bold text-sm tracking-widest block uppercase font-headline">VISUAL TOUR</span>
+              <h2 className="font-headline text-4xl md:text-5xl font-extrabold text-zinc-900 leading-tight tracking-tight">
+                Step Inside <span className="text-primary">Sanctuary</span>.
+              </h2>
+            </div>
+            <p className="text-zinc-500 max-w-md font-light leading-relaxed">
+              Explore the premium details and thoughtful design that make Rest Refresh the ultimate urban recharge station.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {galleryImages.map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                onClick={() => setSelectedIndex(i)}
+                className={`${item.span} relative group overflow-hidden rounded-xl bg-zinc-100 shadow-lg cursor-pointer`}
+              >
+                <img 
+                  src={item.url} 
+                  alt={item.label}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/30 scale-50 group-hover:scale-100 transition-transform duration-500">
+                      <Eye className="text-white" size={24} />
+                    </div>
+                    <span className="text-white font-bold text-sm tracking-wide translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{item.label}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {selectedIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12"
+          >
+            <button 
+              onClick={() => setSelectedIndex(null)}
+              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors cursor-pointer z-50 p-2 bg-white/10 rounded-full"
+            >
+              <X size={32} />
+            </button>
+
+            <button 
+              onClick={() => navigate('prev')}
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors cursor-pointer z-50 p-4 bg-white/10 rounded-full hidden md:block"
+            >
+              <ChevronLeft size={40} />
+            </button>
+
+            <button 
+              onClick={() => navigate('next')}
+              className="absolute right-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors cursor-pointer z-50 p-4 bg-white/10 rounded-full hidden md:block"
+            >
+              <ChevronRight size={40} />
+            </button>
+
+            <motion.div 
+              key={selectedIndex}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-6xl w-full aspect-video rounded-xl overflow-hidden shadow-2xl"
+            >
+              <img 
+                src={galleryImages[selectedIndex].url} 
+                alt={galleryImages[selectedIndex].label}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 inset-x-0 p-8 bg-linear-to-t from-black/80 to-transparent">
+                <p className="text-white font-headline font-bold text-xl">{galleryImages[selectedIndex].label}</p>
+                <div className="flex gap-2 mt-4">
+                  {galleryImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedIndex(i);
+                      }}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === selectedIndex ? 'w-8 bg-primary' : 'w-2 bg-white/30'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="pt-12 pb-24">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="relative rounded-xl overflow-hidden p-16 md:p-32 flex flex-col items-center text-center shadow-2xl">
             <img 
@@ -330,9 +533,12 @@ export default function OfferPage() {
                Pods, showers, and luggage storage - all under one roof, open around the clock.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center pt-4">
-                <button className="bg-primary text-white px-12 py-3 rounded-md font-bold text-base shadow-[0_20px_50px_rgba(255,109,0,0.3)] hover:scale-105 active:scale-95 transition-all cursor-pointer">
+                <Link 
+                  to="/contact"
+                  className="bg-primary text-white px-12 py-3 rounded-md font-bold text-base shadow-[0_20px_50px_rgba(255,109,0,0.3)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                >
                   Book Now
-                </button>
+                </Link>
               </div>
             </motion.div>
           </div>

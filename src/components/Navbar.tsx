@@ -103,9 +103,12 @@ export default function Navbar() {
           </div>
           
           <div className="flex items-center ml-auto z-10">
-            <button className={`${buttonStyle} hidden lg:block px-8 py-3 rounded-md font-headline font-bold text-xs uppercase hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg`}>
+            <Link 
+              to="/contact"
+              className={`${buttonStyle} hidden lg:block px-8 py-3 rounded-md font-headline font-bold text-xs uppercase hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-lg`}
+            >
               Book Now
-            </button>
+            </Link>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`p-2 cursor-pointer transition-colors rounded-md flex items-center lg:hidden ml-2 ${menuToggleColor}`}
@@ -141,9 +144,12 @@ export default function Navbar() {
                 <Link className="block text-xl font-bold text-zinc-600" to="/offer#refresh">Shower & Refresh</Link>
                 <Link className="block text-xl font-bold text-zinc-600" to="/offer#cloakroom">Secure Storage</Link>
               </div>
-              <button className="w-full bg-primary text-white py-3 rounded-md font-bold text-base mt-8">
+              <Link 
+                to="/contact"
+                className="w-full bg-primary text-white py-3 rounded-md font-bold text-center text-base mt-8"
+              >
                 Book Your Pod Now
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}
