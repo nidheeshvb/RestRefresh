@@ -19,19 +19,19 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 const faqs = [
   {
     question: "How do the sleeping pods work?",
-    answer: "Our pods are private, sound-insulated cabins equipped with a comfortable bed, climate control, charging ports, and dimmable lighting. You book for the hours you need, receive a digital key, and enjoy uninterrupted rest."
+    answer: "Our pods are private, sound-insulated cabins equipped with a comfortable bed, charging ports, and lighting. You book for the hours you need and enjoy uninterrupted rest."
   },
   {
     question: "Is it safe for solo travelers and luggage?",
-    answer: "Safety is our top priority. We have 24/7 security personnel, CCTV in public areas, and secure digital locks on every pod. Our cloakroom is supervised and uses a tagged system to ensure your belongings are safe while you move freely."
+    answer: "Safety is our priority. Our facility has CCTV in all public areas and overnight security personnel on site. Each pod has a private curtain for personal privacy. For your belongings, every pod comes with a dedicated storage cabin underneath, and our cloakroom uses a tagged retrieval system so your bags are always accounted for."
   },
   {
-    question: "Can I book for just an hour?",
-    answer: "Yes! We understand travel schedules are unpredictable. You can book for as little as one hour or as long as you need. There are no fixed check-in/out times—the space is ready when you are."
+    question: "Can I book for specific hours?",
+    answer: "We offer flexible booking slots to fit your schedule - 3, 6, 12, or 24 hours. The minimum booking is 3 hours. Simply pick the slot that works for you and we'll have a pod ready."
   },
   {
     question: "How do you maintain hygiene?",
-    answer: "Every pod and shower space undergoes a strict medical-grade cleaning protocol after every use. We use high-quality, fresh linens for every guest and maintain hospital-standard ventilation systems for constant fresh air."
+    answer: "Every pod and shower space undergoes a strict cleaning protocol after every use. We use fresh linens for every guest and maintain ventilation systems for constant fresh air."
   },
   {
     question: "What is your cancellation and refund policy?",
@@ -77,7 +77,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
 }
 
 export default function Contact() {
-  const [state, handleSubmitFormspree] = useFormspree('mbdwvdlj');
+  const [state, handleSubmitFormspree] = useFormspree('mjgzyrva');
   const [showSuccess, setShowSuccess] = useState(false);
 
   const {

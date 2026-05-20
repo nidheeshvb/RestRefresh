@@ -28,8 +28,9 @@ export default function Hero() {
              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-200">
               Rest, Refresh & Store
             </span> <br/>
-          - Right Here at Vyttila 
-         
+            <span className="block text-2xl md:text-[36px] font-medium text-orange-100/90 mt-2 tracking-[0.5px]">
+              Right Here at Vyttila
+            </span>
           </h1>
           <p className="text-zinc-100 text-lg mb-10 leading-relaxed font-normal drop-shadow-sm">
             Tired between journeys? We've got sleeping pods, shower facilities, and secure luggage storage - open 24x7 at the heart of Ernakulam's biggest transit hub.
