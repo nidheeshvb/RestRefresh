@@ -383,37 +383,39 @@ export default function OfferPage() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl overflow-hidden border border-zinc-100 shadow-2xl shadow-zinc-200/50">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="bg-primary border-b border-zinc-100">
-                        <th className="px-8 py-5 font-headline font-bold text-white text-sm uppercase tracking-widest">Duration</th>
-                        <th className="px-8 py-5 font-headline font-bold text-white text-sm uppercase tracking-widest text-center">Standard</th>
-                        <th className="px-8 py-5 font-headline font-bold text-white text-sm uppercase tracking-widest text-right">Large</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-zinc-50">
-                      {[
-                        { d: "Up to 6 hours", s: "49", l: "79" },
-                        { d: "Up to 12 hours", s: "79", l: "119" },
-                        { d: "Up to 24 hours", s: "119", l: "179" }
-                      ].map((row, i) => (
-                        <tr key={i} className="hover:bg-orange-50/30 transition-colors">
-                          <td className="px-8 py-6">
-                             <div className="font-bold text-zinc-900">{row.d}</div>
-                          </td>
-                          <td className="px-8 py-6 text-center">
-                            <span className="font-black text-zinc-800">₹{row.s}</span>
-                          </td>
-                          <td className="px-8 py-6 text-right">
-                            <span className="bg-white px-4 py-2 rounded-md text-primary font-black border border-orange-100 shadow-sm">
-                              ₹{row.l}
-                            </span>
-                          </td>
+                <div id="cloakroom-pricing-card" className="bg-white rounded-xl overflow-hidden border border-zinc-100 shadow-2xl shadow-zinc-200/50">
+                  <div className="w-full overflow-x-auto">
+                    <table id="cloakroom-pricing-table" className="w-full text-left border-collapse min-w-[340px]">
+                      <thead>
+                        <tr className="bg-primary border-b border-zinc-100">
+                          <th className="px-4 py-4 sm:px-8 sm:py-5 font-headline font-bold text-white text-xs sm:text-sm uppercase tracking-widest whitespace-nowrap">Duration</th>
+                          <th className="px-4 py-4 sm:px-8 sm:py-5 font-headline font-bold text-white text-xs sm:text-sm uppercase tracking-widest text-center whitespace-nowrap">Standard</th>
+                          <th className="px-4 py-4 sm:px-8 sm:py-5 font-headline font-bold text-white text-xs sm:text-sm uppercase tracking-widest text-right whitespace-nowrap">Large</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody className="divide-y divide-zinc-50">
+                        {[
+                          { d: "Up to 6 hours", s: "49", l: "79" },
+                          { d: "Up to 12 hours", s: "79", l: "119" },
+                          { d: "Up to 24 hours", s: "119", l: "179" }
+                        ].map((row, i) => (
+                          <tr key={i} className="hover:bg-orange-50/30 transition-colors">
+                            <td className="px-4 py-5 sm:px-8 sm:py-6 whitespace-nowrap">
+                               <div className="font-bold text-zinc-900 text-sm sm:text-base">{row.d}</div>
+                            </td>
+                            <td className="px-4 py-5 sm:px-8 sm:py-6 text-center whitespace-nowrap">
+                              <span className="font-black text-zinc-800 text-sm sm:text-base">₹{row.s}</span>
+                            </td>
+                            <td className="px-4 py-5 sm:px-8 sm:py-6 text-right whitespace-nowrap">
+                              <span className="bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-md text-primary font-black border border-orange-100 shadow-sm text-sm sm:text-base">
+                                ₹{row.l}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <p className="text-sm text-zinc-400 italic bg-zinc-50 p-6 rounded-lg border-l-4 border-zinc-200">
