@@ -17,25 +17,25 @@ export default function OfferPage() {
   const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
 
   const galleryImages = [
-    { 
-      url: "https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?auto=format&fit=crop&q=80&w=1200",
+    {
+      url: "/images/pod.jpg",
       span: "col-span-2 row-span-2",
-      label: "Premium Pod Interior"
+      label: "Double-decker Sleeping Pods"
     },
-    { 
-      url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+    {
+      url: "/images/reception.jpg",
       span: "col-span-1 row-span-1",
-      label: "Luxe Showers"
+      label: "Our Reception"
     },
-    { 
-      url: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1200",
+    {
+      url: "/images/refresh-area.jpg",
       span: "col-span-1 row-span-1",
-      label: "Waiting Lounge"
+      label: "Refresh Area"
     },
-    { 
-      url: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&q=80&w=1200",
+    {
+      url: "/images/dormitory.jpg",
       span: "col-span-2 row-span-1",
-      label: "Privacy & Silence"
+      label: "Dormitory Room"
     }
   ];
 
@@ -53,28 +53,28 @@ export default function OfferPage() {
       {/* Header Section */}
       <section id="pods" className="pt-16 pb-4">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-primary font-bold text-sm tracking-widest block mb-4 uppercase font-headline"
           >
             REVOLUTIONIZING REST
           </motion.span>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="font-headline text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 leading-[1.1] mb-8"
           >
-           <span className="text-primary">Sleep Well.</span><br/>Travel Better.
+            <span className="text-primary">Sleep Well.</span><br />Travel Better.
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-zinc-500 text-lg max-w-2xl font-normal leading-relaxed"
           >
-           Private sleeping pods for men and women - clean, comfortable, and bookable by the hour. Whether it's a short nap or a longer break, we've got a pod ready for you.
+            Private sleeping pods for men and women - clean, comfortable, and bookable by the hour. Whether it's a short nap or a longer break, we've got a pod ready for you.
           </motion.p>
         </div>
       </section>
@@ -83,27 +83,27 @@ export default function OfferPage() {
       <section className="pt-4 pb-12">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 space-y-8">
           {/* Full Width Climate Controlled Hero */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="w-full bg-white rounded-xl relative overflow-hidden flex flex-col justify-end min-h-[500px] md:min-h-[700px] shadow-2xl border border-zinc-100"
           >
-            <img 
-              alt="High-tech rest pod interior" 
-              className="absolute inset-0 w-full h-full object-cover" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuATPiNPjB3L2mQ8wGGlCLQjMJDxV3ZfGNrKjS5L6yAKJ82J0Cegx86eUWOmjmLpBiQqBmc1YS1U02KjUK_Gw0uAw6mvQiQ8Wh3tsZw6yWH17IPWojnKOGwkbVa0zLyATcTWWtK9jyBLeYDMyMABrdpI0BV3dixV4y7jZ_FTdq2k4D5mdply4X812cwtCv8WN40EJcEs9I9_hOsbxUBwW0vQ83a-25XMusY29CAkJ2UgdkH4IgW8SAgvj1vZJDo5Rl6e_VOZPH7qwD4" 
+            <img
+              alt="High-tech rest pod interior"
+              className="absolute inset-0 w-full h-full object-cover"
+              src="/images/pod-img.jpg"
             />
-            
+
             {/* Hotspots Container */}
             <div className="absolute inset-0 z-40 pointer-events-none">
               {hotspots.map((spot, i) => (
-                <div 
+                <div
                   key={i}
                   className="absolute pointer-events-auto"
                   style={{ top: spot.top, left: spot.left }}
                 >
-                  <button 
+                  <button
                     onClick={() => setActiveHotspot(activeHotspot === i ? null : i)}
                     className="relative w-10 h-10 flex items-center justify-center transform hover:scale-110 transition-transform cursor-pointer group -translate-x-1/2 -translate-y-1/2"
                   >
@@ -112,10 +112,10 @@ export default function OfferPage() {
                       {activeHotspot === i ? <X size={12} className="text-primary" /> : <Plus size={12} className="text-primary" />}
                     </div>
                   </button>
-                  
+
                   <AnimatePresence>
                     {activeHotspot === i && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, scale: 0.9, y: 15, x: '-50%' }}
                         animate={{ opacity: 1, scale: 1, y: 0, x: '-50%' }}
                         exit={{ opacity: 0, scale: 0.9, y: 15, x: '-50%' }}
@@ -143,7 +143,7 @@ export default function OfferPage() {
                 <div className="md:hidden">
                   <AnimatePresence mode="wait">
                     {activeHotspot !== null ? (
-                      <motion.div 
+                      <motion.div
                         key={activeHotspot}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -178,7 +178,7 @@ export default function OfferPage() {
 
           {/* Supporting Blocks Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -198,7 +198,7 @@ export default function OfferPage() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -225,8 +225,8 @@ export default function OfferPage() {
                   { icon: <Archive size={16} />, label: 'Storage' },
                   { icon: <Plus size={16} />, label: 'More Amenities' }
                 ].map((item, i) => (
-                  <motion.div 
-                    key={i} 
+                  <motion.div
+                    key={i}
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -244,7 +244,7 @@ export default function OfferPage() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -260,7 +260,7 @@ export default function OfferPage() {
                   <p className="text-white/80 text-sm leading-relaxed font-normal">Every pod has its own curtain for complete privacy. Pods are for single occupancy. Children under 10 may accompany an adult at the receptionist's discretion.</p>
                 </div>
               </div>
-              <Link 
+              <Link
                 to="/contact"
                 className="mt-10 bg-white text-primary px-8 py-3 rounded-md font-bold text-xs uppercase tracking-[0.2em] hover:bg-orange-50 transition-all self-start shadow-xl active:scale-95 cursor-pointer"
               >
@@ -359,7 +359,7 @@ export default function OfferPage() {
       <section className="pt-12 pb-24 border-t border-zinc-100" id="refresh">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -368,7 +368,7 @@ export default function OfferPage() {
               <div className="space-y-4">
                 <span className="text-primary font-bold text-sm tracking-widest block uppercase font-headline">REFRESH</span>
                 <h2 className="font-headline text-4xl md:text-6xl font-extrabold text-zinc-900 leading-tight tracking-tight">
-                  In and Out. <br/><span className="text-primary">Fresh</span> and <span className="text-primary">Ready</span>.
+                  In and Out. <br /><span className="text-primary">Fresh</span> and <span className="text-primary">Ready</span>.
                 </h2>
                 <p className="text-zinc-500 text-xl font-normal leading-relaxed">
                   Walk in, shower, freshen up, and go - for just Rs. 150. No complex booking needed - just show up when you need that reset.
@@ -377,10 +377,10 @@ export default function OfferPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {[
-                  { icon: <Zap size={20}/>, t: "Walk-in only - no advance booking required" },
-                  { icon: <Bell size={20}/>, t: "Charged by the hour with fair pricing" },
-                  { icon: <Droplets size={20}/>, t: "Shower liquid and shampoo provided" },
-                  { icon: <Bath size={20}/>, t: "Bath towels available for purchase at the venue" }
+                  { icon: <Zap size={20} />, t: "Walk-in only - no advance booking required" },
+                  { icon: <Bell size={20} />, t: "Charged by the hour with fair pricing" },
+                  { icon: <Droplets size={20} />, t: "Shower liquid and shampoo provided" },
+                  { icon: <Bath size={20} />, t: "Bath towels available for purchase at the venue" }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 p-6 bg-zinc-50 rounded-lg border border-zinc-100 hover:bg-white hover:shadow-lg transition-all duration-300">
                     <div className="text-primary shrink-0">{item.icon}</div>
@@ -389,17 +389,17 @@ export default function OfferPage() {
                 ))}
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="order-1 lg:order-2"
             >
               <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] relative group">
-                <img 
-                  alt="Premium shower area" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[5s]" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-muqeO-VWZP2PE5gFxGZPs4elL0PW7OaLVvlzS3EeGvDT664dUumTCGLtNqsYT94B-pz0wlC0TnY84UbDlere8eN6rmhuxH_MwsyE7K6flqNV2WE6KOKCsb8GVrQ7sQvadARJrkQDzvFPT2mfIj5j_1prE56FNgznyM7KoMg8S2nRC0ii0IwBD0CniKHywpGSnAazqJnuCSBorLALw50SQyDNhz7QlETm4M9mduEkUfzWBHZa7DwHJOOJXNxQCWHlMuC97XTzLTY" 
+                <img
+                  alt="Premium shower area"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[5s]"
+                  src="/images/refresh.jpg"
                 />
                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
               </div>
@@ -412,28 +412,28 @@ export default function OfferPage() {
       <section className="py-24 border-t border-zinc-100" id="cloakroom">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
             >
               <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.15)] relative group">
-                <img 
-                  alt="Secure cloakroom storage" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[5s]" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC7OCs2Kr0MudETdXSlWSocghPUahI5Pa5McnxQrAHT2vh5bZevO7fI0oIIjZ-tCrDDGez4z2KNuYOHll-znUHpAsHmTEMitP_GOrej2CyXGJxM7bBKbsWio07wt0O-Sg1YmOcQJre9X9miqJpuSopFHR83AFiklFOVyaQdbeNcEeHlgs6IkR7YRxHxIDvN2UtHIq23d-rIkGKiJGORE9QkebSYp5RMpJLr_wWS21ovGmKMFYkRhALy0cq6CVrd6gM1K1mZEuwuqw" 
+                <img
+                  alt="Secure cloakroom storage"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[5s]"
+                  src="/images/cloakroom.jpg"
                 />
                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
                 <div className="absolute top-10 left-10 bg-white/90 backdrop-blur-md px-6 py-4 rounded-lg shadow-xl flex items-center gap-4 border border-white/50">
-                   <Warehouse className="text-primary" />
-                   <div className="space-y-0.5">
-                      <span className="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Storage Status</span>
-                      <span className="block text-sm font-bold text-zinc-900">85% Secured Space</span>
-                   </div>
+                  <Warehouse className="text-primary" />
+                  <div className="space-y-0.5">
+                    <span className="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Storage Status</span>
+                    <span className="block text-sm font-bold text-zinc-900">85% Secured Space</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -442,7 +442,7 @@ export default function OfferPage() {
               <div className="space-y-4">
                 <span className="text-primary font-bold text-sm tracking-widest block uppercase font-headline">CLOAKROOM</span>
                 <h2 className="font-headline text-4xl md:text-6xl font-extrabold text-zinc-900 leading-tight tracking-tight">
-                  Travel <span className="text-primary">Light</span>. <br/>Safe <span className="text-primary">Storage</span>.
+                  Travel <span className="text-primary">Light</span>. <br />Safe <span className="text-primary">Storage</span>.
                 </h2>
                 <p className="text-zinc-500 text-xl font-normal leading-relaxed">
                   Leave your bags with us and move around freely. Secure, staff-managed storage with affordable pricing by bag size.
@@ -486,7 +486,7 @@ export default function OfferPage() {
                         ].map((row, i) => (
                           <tr key={i} className="hover:bg-orange-50/30 transition-colors">
                             <td className="px-4 py-5 sm:px-8 sm:py-6 whitespace-nowrap">
-                               <div className="font-bold text-zinc-900 text-sm sm:text-base">{row.d}</div>
+                              <div className="font-bold text-zinc-900 text-sm sm:text-base">{row.d}</div>
                             </td>
                             <td className="px-4 py-5 sm:px-8 sm:py-6 text-center whitespace-nowrap">
                               <span className="font-black text-zinc-800 text-sm sm:text-base">₹{row.s}</span>
@@ -525,7 +525,7 @@ export default function OfferPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {galleryImages.map((item: any, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -534,8 +534,8 @@ export default function OfferPage() {
                 onClick={() => setSelectedIndex(i)}
                 className={`${item.span} relative group overflow-hidden rounded-xl bg-zinc-100 shadow-lg cursor-pointer`}
               >
-                <img 
-                  src={item.thumbnail || item.url} 
+                <img
+                  src={item.thumbnail || item.url}
                   alt={item.label}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -561,36 +561,36 @@ export default function OfferPage() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12"
           >
-            <button 
+            <button
               onClick={() => setSelectedIndex(null)}
               className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors cursor-pointer z-50 p-2 bg-white/10 rounded-full"
             >
               <X size={32} />
             </button>
 
-            <button 
+            <button
               onClick={() => navigate('prev')}
               className="absolute left-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors cursor-pointer z-50 p-4 bg-white/10 rounded-full hidden md:block"
             >
               <ChevronLeft size={40} />
             </button>
 
-            <button 
+            <button
               onClick={() => navigate('next')}
               className="absolute right-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors cursor-pointer z-50 p-4 bg-white/10 rounded-full hidden md:block"
             >
               <ChevronRight size={40} />
             </button>
 
-            <motion.div 
+            <motion.div
               key={selectedIndex}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="relative max-w-6xl w-full aspect-video rounded-xl overflow-hidden shadow-2xl"
             >
-              <img 
-                src={galleryImages[selectedIndex].url} 
+              <img
+                src={galleryImages[selectedIndex].url}
                 alt={galleryImages[selectedIndex].label}
                 className="w-full h-full object-cover"
               />
@@ -604,9 +604,8 @@ export default function OfferPage() {
                         e.stopPropagation();
                         setSelectedIndex(i);
                       }}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        i === selectedIndex ? 'w-8 bg-primary' : 'w-2 bg-white/30'
-                      }`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${i === selectedIndex ? 'w-8 bg-primary' : 'w-2 bg-white/30'
+                        }`}
                     />
                   ))}
                 </div>

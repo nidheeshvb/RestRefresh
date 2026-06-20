@@ -41,7 +41,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="bg-white rounded-md border border-zinc-200 overflow-hidden shadow-sm hover:shadow-md transition-all">
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center p-6 text-left font-bold text-lg cursor-pointer"
       >
@@ -70,14 +70,14 @@ export default function About() {
       {/* Page Intro Header */}
       <section className="pt-16 md:pt-24 text-center">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black tracking-tight text-zinc-900 uppercase mb-4 font-headline"
           >
             OUR ORIGIN
           </motion.h1>
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
             animate={{ width: 80 }}
             className="h-1.5 bg-primary mx-auto mb-12"
@@ -98,6 +98,11 @@ export default function About() {
             <p>
               We’ve seen travellers sit on their luggage just to take a break. We’ve seen people walk around tired, carrying everything with them. We’ve heard students say they do this every single day. We’ve met families who just needed a clean washroom and a place to pause.
             </p>
+            <p>
+              So we asked ourselves {"->"} Why isn’t there a simple space for this already?
+              <br /><br />
+              To understand better, we spoke to passengers, auto drivers, and staff around the hub. What did they tell us? That people don’t always need a hotel. That hygiene matters more than anything. That safety, especially for luggage and solo travellers, is non-negotiable. That even 2–3 hours of proper rest can make a huge difference. And most importantly - that if a clean, safe, nearby option existed, people would use it.
+            </p>
           </div>
         </div>
       </section>
@@ -105,16 +110,16 @@ export default function About() {
       {/* Full Width Facade Image Section */}
       <section className="mb-32">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="w-full rounded-2xl overflow-hidden shadow-2xl border border-zinc-100"
           >
-            <img 
-              alt="Rest Refresh storefront facade" 
-              className="w-full h-auto md:h-[600px] object-cover" 
-              src="/about_facade.jpg"
+            <img
+              alt="Rest Refresh storefront facade"
+              className="w-full h-auto md:h-[600px] object-cover"
+              src="/images/Rest-refresh-outside.jpg"
               referrerPolicy="no-referrer"
             />
           </motion.div>
@@ -125,12 +130,8 @@ export default function About() {
       <section className="mb-32">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="max-w-4xl mx-auto space-y-12 text-zinc-600 leading-relaxed text-lg font-normal">
-            <p>
-              So we asked ourselves {"->"} Why isn’t there a simple space for this already?
-              <br /><br />
-              To understand better, we spoke to passengers, auto drivers, and staff around the hub. What did they tell us? That people don’t always need a hotel. That hygiene matters more than anything. That safety, especially for luggage and solo travellers, is non-negotiable. That even 2–3 hours of proper rest can make a huge difference. And most importantly - that if a clean, safe, nearby option existed, people would use it.
-            </p>
-            
+
+
             <div className="bg-zinc-50 p-12 rounded-lg border-l-8 border-primary my-12 shadow-sm">
               <p className="text-2xl font-bold text-zinc-900 mb-4 tracking-tight">That’s exactly why Rest Refresh was created.</p>
               <p className="text-zinc-500">Not as a luxury. Not as a replacement for hotels. But as something travellers have quietly needed for years.</p>
@@ -183,20 +184,20 @@ export default function About() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-32 bg-zinc-50">
+      <section id="faq" className="py-10 bg-zinc-50">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-20 space-y-4">
-            <span className="text-primary font-bold text-sm tracking-widest uppercase block">Common Questions</span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900">Frequently Asked</h2>
-          </div>
-          <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.question} answer={faq.answer} />
-            ))}
+            <div className="text-center mb-20 space-y-4">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase block">Common Questions</span>
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900">Frequently Asked</h2>
+            </div>
+            <div className="space-y-6">
+              {faqs.map((faq, i) => (
+                <FAQItem key={i} question={faq.question} answer={faq.answer} />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
       </section>
 
       {/* CTA Section */}
