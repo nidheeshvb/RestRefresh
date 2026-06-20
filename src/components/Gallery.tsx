@@ -92,7 +92,7 @@ export default function Gallery() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {galleryItems.map((item, index) => (
+          {galleryItems.map((item: any, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -130,7 +130,7 @@ export default function Gallery() {
                   onClick={() => openLightbox(item.src!)}
                 >
                   <img 
-                    src={item.src} 
+                    src={item.thumbnail || item.src} 
                     alt={item.alt} 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                   />

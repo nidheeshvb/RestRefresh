@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: "Is it safe for solo travelers and luggage?",
-    answer: "Safety is our priority. Our facility has CCTV in all public areas and overnight security personnel on site. Each pod has a private curtain for personal privacy. For your belongings, every pod comes with a dedicated storage cabin underneath, and our cloakroom uses a tagged retrieval system so your bags are always accounted for."
+    answer: "Safety is our priority, and our facility has CCTV in all public areas to ensure that. Each pod has a private curtain for personal privacy. For your belongings, every pod comes with a dedicated storage cabin underneath, and our cloakroom uses a tagged retrieval system so your bags are always accounted for."
   },
   {
     question: "Can I book for specific hours?",
@@ -102,49 +102,22 @@ export default function About() {
         </div>
       </section>
 
-      {/* Image Grid Section */}
+      {/* Full Width Facade Image Section */}
       <section className="mb-32">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 h-auto md:h-[650px]">
-            {/* Column 1 */}
-            <div className="flex flex-col h-full">
-              <div className="flex-1 rounded-xl overflow-hidden shadow-2xl">
-                <img 
-                  alt="Premium minimalist sleeping pod interior" 
-                  className="w-full h-full object-cover" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJEXR71Pryl1SeI8Q6NB0aljQQ9tAbPCMBgGtQ79YpMjJ3vfHZ1CinLwPx-ZtRfQ0-2aiXXwmC3mfHuvpWEnsnFoIxRAqhkhXPjy1ULriUwgnWSsW6LbDaXex3IPK3dFHTq5q5t7rhAvfHzBeUnyccIhZCtLSVpOSTdnwpVKNkfu51AW7LtrnJH2OL-2cTyrEOp6789gQGUzqZFMwWKEp6lzrLLG9Ss1dyPY_KsMTM92GFTMrB8ZrNWU2P7thzaLIEfqn0g_YBdhA" 
-                />
-              </div>
-            </div>
-            {/* Column 2 */}
-            <div className="flex flex-col h-full gap-8">
-              <div className="bg-primary text-white p-10 rounded-lg flex flex-col justify-center h-1/2 shadow-xl">
-                <div className="text-7xl font-black mb-2 font-headline tracking-tighter">90%</div>
-                <div className="text-2xl font-bold opacity-90 tracking-tight">Faster Recovery Rate</div>
-              </div>
-              <div className="flex-1 rounded-xl overflow-hidden shadow-2xl">
-                <img 
-                  alt="Team members" 
-                  className="w-full h-full object-cover" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJx8TcTctYgY0jg8Kekh7Cl644Keeobmie2pf7tUJAvy8HLQmfryDjWLnPy4Sndud9xPelB7GkPV3Uj8oeRQM0zWwYJEa9tPpaPGsBkWaaPdHEfn5DkGEp8PpPr-G_RZPzHKqk5d-amTQGM8A_IsxDyVWBgDc4vfud9U56yVXkc81WufDAv4IWp6-WXOF0SDYRpj5WUidVipIRGH2HCPhKBmOQxqonUdUArWaMH0ymTMSgyU2_fNz7iX84EyneX3q2e6fmQgIpa2A" 
-                />
-              </div>
-            </div>
-            {/* Column 3 */}
-            <div className="flex flex-col h-full gap-8">
-              <div className="flex-1 rounded-xl overflow-hidden shadow-2xl">
-                <img 
-                  alt="Person working" 
-                  className="w-full h-full object-cover" 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAffeDy6xFrhpLUXJiMGkFFUMauz9j400z0rjbtNcYnUFkLjTVKKjwMT2iCJo-jiLyRAl3oM8a1L2z_mfk14X_1KYukLqomU358_0b_f8RyduE2iNLyU79zgIKUDQxhcmjrahat8PsLhlshkIeLSHZsgCgWy97lHOMkh6QqMolgdGt8U5ukXxU3bvSjE5WrFmI3b-42YvJxYFIP4jQcKrnHnA9yV1NMToYqm9wfKGym3VHHCEOk0bSW9wCLHE_Ry4ekwcEcKq8cjoo" 
-                />
-              </div>
-              <div className="bg-zinc-950 text-white p-10 rounded-lg flex flex-col justify-center h-[40%] shadow-xl">
-                <div className="text-6xl font-black mb-2 font-headline tracking-tighter">50%</div>
-                <div className="text-xl opacity-80 tracking-tight">Better Mental Clarity</div>
-              </div>
-            </div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="w-full rounded-2xl overflow-hidden shadow-2xl border border-zinc-100"
+          >
+            <img 
+              alt="Rest Refresh storefront facade" 
+              className="w-full h-auto md:h-[600px] object-cover" 
+              src="/about_facade.jpg"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
         </div>
       </section>
 

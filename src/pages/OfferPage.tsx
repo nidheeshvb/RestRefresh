@@ -80,7 +80,7 @@ export default function OfferPage() {
       </section>
 
       {/* Bento Grid Services/Features */}
-      <section className="pt-4 pb-24">
+      <section className="pt-4 pb-12">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 space-y-8">
           {/* Full Width Climate Controlled Hero */}
           <motion.div 
@@ -267,11 +267,95 @@ export default function OfferPage() {
               </Link>
             </motion.div>
           </div>
+
+          {/* Pods Pricing Block */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="pt-16 pb-0 space-y-10"
+            id="pods-pricing"
+          >
+            <div className="space-y-4 text-center">
+              <span className="text-primary font-bold text-sm tracking-widest block uppercase font-headline">PODS PRICING</span>
+              <h2 className="font-headline text-3xl md:text-5xl font-extrabold text-zinc-900 tracking-tight">
+                Flexible Booking Packages
+              </h2>
+              <p className="text-zinc-500 text-base md:text-lg max-w-xl mx-auto font-normal">
+                Choose a flexible booking slot that perfectly aligns with your travel schedules.
+              </p>
+            </div>
+
+            {/* Pricing Cards Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+              {[
+                { duration: "3 Hours", price: "299" },
+                { duration: "6 Hours", price: "449" },
+                { duration: "12 Hours", price: "599" },
+                { duration: "24 Hours", price: "799" },
+              ].map((slot, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-white rounded-xl overflow-hidden border border-zinc-100 shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 flex flex-col"
+                >
+                  {/* Card Header */}
+                  <div className="bg-primary py-4 text-center">
+                    <span className="font-headline font-extrabold text-white text-base sm:text-lg md:text-xl uppercase tracking-wider block">
+                      {slot.duration}
+                    </span>
+                  </div>
+                  {/* Card Body */}
+                  <div className="bg-white py-6 sm:py-8 flex-1 flex items-center justify-center border-t border-zinc-50">
+                    <span className="font-headline text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary">
+                      Rs. {slot.price}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* GST Notice and Callout Block Container */}
+            <div className="space-y-6 max-w-3xl mx-auto">
+              {/* GST Notice */}
+              <p className="text-xs sm:text-sm text-zinc-400 italic text-center">
+                *GST applicable on all prices
+              </p>
+
+              {/* Add-ons Information / Booking Guidelines Callout */}
+              <div className="bg-primary/5 border-l-4 border-primary p-6 md:p-8 rounded-r-xl space-y-5 text-left">
+                <p className="text-zinc-900 font-bold text-sm uppercase tracking-widest">ADD-ONS & AMENITIES</p>
+                <div className="space-y-4">
+                  <div className="flex gap-4 items-center">
+                    <span className="text-3xl shrink-0">🧺</span>
+                    <p className="text-zinc-700 text-base leading-relaxed">
+                      Bath towel can be rented at <span className="font-bold text-zinc-900">Rs. 30</span>, or purchased at the reception
+                    </p>
+                  </div>
+                  <div className="flex gap-4 items-center">
+                    <span className="text-3xl shrink-0">🛌</span>
+                    <p className="text-zinc-700 text-base leading-relaxed">
+                      Blanket available to rent for 3 hrs & 6 hrs booking at <span className="font-bold text-zinc-900">Rs. 50</span>
+                    </p>
+                  </div>
+                  <div className="flex gap-4 items-center">
+                    <span className="text-3xl shrink-0">✅</span>
+                    <p className="text-zinc-700 text-base leading-relaxed">
+                      Blanket <span className="font-bold text-zinc-900">included</span> for 12 hrs & 24 hrs bookings, available on request
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Refresh Section */}
-      <section className="py-24 border-t border-zinc-100" id="refresh">
+      <section className="pt-12 pb-24 border-t border-zinc-100" id="refresh">
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div 
@@ -286,7 +370,7 @@ export default function OfferPage() {
                   In and Out. <br/><span className="text-primary">Fresh</span> and <span className="text-primary">Ready</span>.
                 </h2>
                 <p className="text-zinc-500 text-xl font-normal leading-relaxed">
-                  Walk in, shower, freshen up, and go. No complex booking needed - just show up when you need that reset.
+                  Walk in, shower, freshen up, and go - for just Rs. 150. No complex booking needed - just show up when you need that reset.
                 </p>
               </div>
 
@@ -360,7 +444,7 @@ export default function OfferPage() {
                   Travel <span className="text-primary">Light</span>. <br/>Safe <span className="text-primary">Storage</span>.
                 </h2>
                 <p className="text-zinc-500 text-xl font-normal leading-relaxed">
-                  Leave your bags with us and move around freely. Secure, staff-managed storage with simple hourly pricing by bag size.
+                  Leave your bags with us and move around freely. Secure, staff-managed storage with affordable pricing by bag size.
                 </p>
               </div>
 
@@ -439,7 +523,7 @@ export default function OfferPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {galleryImages.map((item, i) => (
+            {galleryImages.map((item: any, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -450,7 +534,7 @@ export default function OfferPage() {
                 className={`${item.span} relative group overflow-hidden rounded-xl bg-zinc-100 shadow-lg cursor-pointer`}
               >
                 <img 
-                  src={item.url} 
+                  src={item.thumbnail || item.url} 
                   alt={item.label}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
